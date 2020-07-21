@@ -1,0 +1,15 @@
+@startuml
+MyApplication -> SharedPreferencesUtil: init
+SharedPreferencesUtil -> MyApplication: getSharedPreferences
+MyApplication --> SharedPreferencesUtil: sharedPreferences
+MyApplication -> LoadResourceUtil: init
+LoadResourceUtil -> LoadResourceUtil: getResourceLoad
+MainActivity -> LoadResourceUtil: setLoadResource
+LoadResourceUtil -> LoadResourceUtil: getResourceLoad
+MainActivity -> LoadResourceUtil: getDrawable
+LoadResourceUtil --> MainActivity: Drawable
+MainActivity -> LoadResourceUtil: getString
+LoadResourceUtil --> MainActivity: String
+MainActivity -> LoadResourceUtil: getColor
+LoadResourceUtil --> MainActivity: int
+@enduml

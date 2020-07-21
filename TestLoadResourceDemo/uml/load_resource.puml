@@ -1,0 +1,79 @@
+@startuml
+
+class Application
+class MyApplication {
+    void onCreate()
+}
+class AppCompatActivity
+class MainActivity {
+    #void onCreate(Bundle savedInstanceState)
+    ~void onClick(View v)
+    +void onRequestPermissionsResult(requestCode, permissions, grantResults)
+}
+class AssetManager {
+    int addAssetPath(String path)
+}
+interface View.OnClickListener {
+    void onClick(View v)
+}
+class LoadResourceUtil {
+    RESOURCE_TYPE_DRAWABLE
+    RESOURCE_TYPE_STRING
+    RESOURCE_TYPE_COLOR
+    Context mContext
+    String mDexDir
+    LoadResourceBean mResourceLoadBean
+    LoadResourceUtil getInstance()
+    init(Context context, String resourcePath)
+    LoadResourceBean getResourceLoad(String resourcePath)
+    setLoadResource(String resourcePath)
+    Drawable getDrawable(String fieldName)
+    String getString(String fieldName)
+    int getColor(String fieldName)
+    int getResourceID(String packageName, String type, String fieldName)
+}
+
+class Context {
+    Context getApplicationContext()
+    File getDir(String name, int mode)
+    PackageManager getPackageManager()
+    Resources getResources()
+}
+
+class LoadResourceBean {
+    Resources resources
+    String packageName
+    ClassLoader classLoader
+}
+
+class Resources {
+    DisplayMetrics getDisplayMetrics()
+    Configuration getConfiguration()
+}
+class ClassLoader
+class DexClassLoader
+
+class SharedPreferencesUtil {
+    init(Application application)
+    String getResourcePath()
+    put(String key, Object value)
+}
+class SPConsts {
+    SP_NAME
+    SP_RESOURCE_PATH
+}
+
+Application <|-- MyApplication: 1泛化Generalization
+AppCompatActivity <|-- MainActivity
+View.OnClickListener <|-- MainActivity: 2实现Realization
+MainActivity ..> LoadResourceUtil: 6依赖Dependency
+LoadResourceUtil --> Context
+LoadResourceUtil --> LoadResourceBean: 5关联Association
+MyApplication ..> SharedPreferencesUtil
+MyApplication ..> LoadResourceUtil
+LoadResourceBean *-- Resources: 3组合Composition(has-a)
+LoadResourceBean o-- ClassLoader: 4聚合Aggregation(contains-a)
+SharedPreferencesUtil ..> SPConsts
+ClassLoader <|-- DexClassLoader
+
+@enduml
