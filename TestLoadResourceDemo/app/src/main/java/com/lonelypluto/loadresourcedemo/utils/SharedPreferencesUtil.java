@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.lonelypluto.loadresourcedemo.utils;
 
 import android.app.Application;
@@ -9,19 +6,12 @@ import android.content.SharedPreferences;
 
 import com.lonelypluto.loadresourcedemo.constants.SPConsts;
 
-/**
- * @Description:
- * @author: sts
- * @time: 2018/9/6 9:03
- */
 public class SharedPreferencesUtil {
-
 
     private static SharedPreferences sharedPreferences;
 
     /**
      * 初始化 在application中
-     *
      * @param application
      */
     public static void init(Application application) {
@@ -31,7 +21,6 @@ public class SharedPreferencesUtil {
 
     /**
      * 资源路径
-     *
      * @return (def " ")
      */
     public static String getResourcePath() {
@@ -42,7 +31,6 @@ public class SharedPreferencesUtil {
 
     /**
      * 插入
-     *
      * @param key
      * @param value
      */
@@ -61,7 +49,6 @@ public class SharedPreferencesUtil {
 
         editor.commit();
     }
-
 
     /**
      * 清空所有
@@ -87,5 +74,4 @@ public class SharedPreferencesUtil {
         editor.remove(SPConsts.SP_RESOURCE_PATH);
         editor.commit();
     }
-
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,8 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/test_img"
-        android:scaleType="centerCrop"
-        />
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/main_tv"
@@ -21,41 +19,39 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/test_text"
-        android:textColor="@color/test_color"
-        />
+        android:textColor="@color/test_color" />
 
-    <Button
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/main_btn_set_resource"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="设置外部资源apk路径"
-        />
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="加载testResource1.apk" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/main_btn_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="加载testResource2.apk" />
 
     <Button
         android:id="@+id/main_btn_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="加载图片"
-        />
+        android:text="加载图片" />
 
     <Button
         android:id="@+id/main_btn_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="加载文字"
-        />
+        android:text="加载文字" />
 
     <Button
         android:id="@+id/main_btn_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="加载颜色"
-        />
-
-    <Button
-        android:id="@+id/main_btn_other"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="切换到另一个资源包"
-        />
+        android:text="加载颜色" />
 </LinearLayout>

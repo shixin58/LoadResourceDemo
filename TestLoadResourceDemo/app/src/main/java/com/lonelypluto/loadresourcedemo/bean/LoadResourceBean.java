@@ -3,9 +3,7 @@ package com.lonelypluto.loadresourcedemo.bean;
 import android.content.res.Resources;
 
 /**
- * @Description: 资源加载bean
- * @author: ZhangYW
- * @time: 2018/9/17 10:48
+ * 资源加载bean
  */
 public class LoadResourceBean {
     /**

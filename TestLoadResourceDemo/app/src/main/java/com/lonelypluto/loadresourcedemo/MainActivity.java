@@ -14,9 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lonelypluto.loadresourcedemo.constants.SPConsts;
 import com.lonelypluto.loadresourcedemo.utils.LoadResourceUtil;
-import com.lonelypluto.loadresourcedemo.utils.SharedPreferencesUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,11 +25,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ImageView iv;
     private TextView tv;
-    private Button btn_set_resource;
+
+    private TextView btn_set_resource;
+    private TextView btn_ohter;
+
     private Button btn_img;
     private Button btn_text;
     private Button btn_color;
-    private Button btn_ohter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +49,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView(){
         iv = (ImageView)findViewById(R.id.main_iv);
         tv = (TextView)findViewById(R.id.main_tv);
-        btn_set_resource = (Button)findViewById(R.id.main_btn_set_resource);
+
+        btn_set_resource = findViewById(R.id.main_btn_set_resource);
+        btn_ohter = findViewById(R.id.main_btn_other);
+
         btn_img = (Button)findViewById(R.id.main_btn_img);
         btn_text = (Button)findViewById(R.id.main_btn_text);
         btn_color = (Button)findViewById(R.id.main_btn_color);
-        btn_ohter = (Button)findViewById(R.id.main_btn_other);
-
     }
 
     /**
@@ -62,19 +63,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void setListener(){
         btn_set_resource.setOnClickListener(this);
+        btn_ohter.setOnClickListener(this);
+
         btn_img.setOnClickListener(this);
         btn_text.setOnClickListener(this);
         btn_color.setOnClickListener(this);
-        btn_ohter.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.main_btn_set_resource:
-                // 加载sd卡路径下的资源apk文件
+                // 加载sd卡路径下的资源文件testResource1.apk
                 LoadResourceUtil.getInstance().setLoadResource(Environment.getExternalStorageDirectory() + "/testResource1.apk");
-                Toast.makeText(this, "加载成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "testResource1.apk加载成功", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.main_btn_other:
+                // 加载sd卡路径下的资源文件testResource2.apk
+                LoadResourceUtil.getInstance().setLoadResource(Environment.getExternalStorageDirectory() + "/testResource2.apk");
+                Toast.makeText(this, "testResource2.apk加载成功", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.main_btn_img:
                 // 加载资源apk文件中的图片
@@ -91,13 +98,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // 加载资源apk文件中的颜色
                 tv.setTextColor(LoadResourceUtil.getInstance().getColor("test_color"));
                 break;
-            case R.id.main_btn_other:
-                // 加载sd卡路径下的其他资源apk文件
-                LoadResourceUtil.getInstance().setLoadResource(Environment.getExternalStorageDirectory() + "/testResource2.apk");
-                Toast.makeText(this, "加载成功", Toast.LENGTH_SHORT).show();
+            default:
                 break;
-                default:
-                    break;
         }
     }
 

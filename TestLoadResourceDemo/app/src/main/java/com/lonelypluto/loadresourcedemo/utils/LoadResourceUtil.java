@@ -16,9 +16,7 @@ import java.lang.reflect.Method;
 import dalvik.system.DexClassLoader;
 
 /**
- * @Description: 资源加载工具类
- * @author: ZhangYW
- * @time: 2018/9/17 11:16
+ * 资源加载工具类
  */
 public class LoadResourceUtil {
     private static final String TAG = LoadResourceUtil.class.getSimpleName();
@@ -30,31 +28,23 @@ public class LoadResourceUtil {
     private String mDexDir;// 资源路径
     private static LoadResourceBean mResourceLoadBean;// 资源对象
 
-    /**
-     * 静态内部类
-     */
     private static class LoadResourceUtilHolder {
         private static final LoadResourceUtil INSTANCE = new LoadResourceUtil();
     }
 
-    /**
-     * 单例模式
-     * @return
-     */
     public static final LoadResourceUtil getInstance() {
         return LoadResourceUtilHolder.INSTANCE;
     }
 
     /**
      * 初始化
-     *
-     * @param context
      * @param resourcePath 本地资源路径
      */
     public void init(Context context, String resourcePath) {
-        Log.e(TAG, "init");
         mContext = context.getApplicationContext();
+        // /data/user/0/com.lonelypluto.loadresourcedemo/app_dex
         File dexDir = mContext.getDir("dex", Context.MODE_PRIVATE);
+        Log.e(TAG, "init "+resourcePath + " | " + dexDir.getAbsolutePath());
         if (!dexDir.exists()) {
             dexDir.mkdir();
         }
@@ -64,17 +54,14 @@ public class LoadResourceUtil {
 
     /**
      * 加载未安装资源包
-     *
      * @param resourcePath 未安装资源包
-     * @return
      */
     public LoadResourceBean getResourceLoad(String resourcePath) {
         Log.e(TAG, "getLoadResource");
         LoadResourceBean resourceLoadBean = null;
         // 获取未安装APK的PackageInfo
         PackageInfo info = queryPackageInfo(resourcePath);
-        if (info != null) {
-            // 获取成功
+        if (info != null) {// 获取成功
             try {
                 // 创建AssetManager实例
                 AssetManager assetManager = AssetManager.class.newInstance();
@@ -94,16 +81,13 @@ public class LoadResourceUtil {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
         return resourceLoadBean;
     }
 
     /**
      * 重新加载未安装应用资源包
-     *
-     * @param resourcePath 未安装资源包路径
-     * @return
+     * @param resourcePath 未安装资源包路径 /storage/emulated/0/testResource1.apk
      */
     public void setLoadResource(String resourcePath) {
         // 保存资源包路径 下次进入程序默认加载
@@ -113,9 +97,7 @@ public class LoadResourceUtil {
 
     /**
      * 获取未安装资源包信息
-     *
      * @param resourcePath 未安装资源包路径
-     * @return
      */
     private PackageInfo queryPackageInfo(String resourcePath) {
         return mContext.getPackageManager().getPackageArchiveInfo(resourcePath, PackageManager.GET_ACTIVITIES);
@@ -123,9 +105,7 @@ public class LoadResourceUtil {
 
     /**
      * 获取未安装资源Drawable
-     *
      * @param fieldName 资源名
-     * @return
      */
     public Drawable getDrawable(String fieldName) {
         Drawable drawable = null;
@@ -138,9 +118,7 @@ public class LoadResourceUtil {
 
     /**
      * 获取未安装资源String
-     *
      * @param fieldName 资源名
-     * @return
      */
     public String getString(String fieldName) {
         String string = null;
@@ -153,9 +131,7 @@ public class LoadResourceUtil {
 
     /**
      * 获取未安装资源color
-     *
      * @param fieldName 资源名
-     * @return
      */
     public int getColor(String fieldName) {
         int color = 0;
@@ -168,11 +144,9 @@ public class LoadResourceUtil {
 
     /**
      * 获取未安装资源的ID
-     *
      * @param packageName 包名
      * @param type        资源类型
      * @param fieldName   资源名
-     * @return
      */
     public int getResourceID(String packageName, String type, String fieldName) {
         int resID = 0;
