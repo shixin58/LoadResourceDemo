@@ -15,13 +15,12 @@ public class SharedPreferencesUtil {
      * @param application
      */
     public static void init(Application application) {
-
         sharedPreferences = application.getSharedPreferences(SPConsts.SP_NAME, Context.MODE_PRIVATE);
     }
 
     /**
      * 资源路径
-     * @return (def " ")
+     * @return (def "")
      */
     public static String getResourcePath() {
         String str_resourcePath;

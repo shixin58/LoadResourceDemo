@@ -20,9 +20,34 @@ import dalvik.system.DexClassLoader;
  */
 public class LoadResourceUtil {
     private static final String TAG = LoadResourceUtil.class.getSimpleName();
-    private static final String RESOURCE_TYPE_DRAWABLE = "drawable";// 图片
-    private static final String RESOURCE_TYPE_STRING = "string";// 文字
-    private static final String RESOURCE_TYPE_COLOR = "color";// 颜色
+
+    private static final String RESOURCE_TYPE_ANIM = "anim";
+    private static final String RESOURCE_TYPE_ANIMATOR = "animator";
+    private static final String RESOURCE_TYPE_INTERPOLATOR = "interpolator";
+
+    private static final String RESOURCE_TYPE_MIPMAP = "mipmap";
+    private static final String RESOURCE_TYPE_DRAWABLE = "drawable";
+    private static final String RESOURCE_TYPE_RAW = "raw";
+
+    private static final String RESOURCE_TYPE_ATTR = "attr";
+    private static final String RESOURCE_TYPE_STYLE = "style";
+    private static final String RESOURCE_TYPE_STYLEABLE = "styleable";
+
+    private static final String RESOURCE_TYPE_LAYOUT = "layout";
+    private static final String RESOURCE_TYPE_XML = "xml";
+    private static final String RESOURCE_TYPE_MENU = "menu";
+    private static final String RESOURCE_TYPE_NAVIGATION = "navigation";
+
+    private static final String RESOURCE_TYPE_STRING = "string";
+    private static final String RESOURCE_TYPE_PLURALS = "plurals";
+    private static final String RESOURCE_TYPE_ARRAY = "array";
+
+    private static final String RESOURCE_TYPE_COLOR = "color";
+    private static final String RESOURCE_TYPE_BOOL = "bool";
+    private static final String RESOURCE_TYPE_DIMEN = "dimen";
+    private static final String RESOURCE_TYPE_ID = "id";
+    private static final String RESOURCE_TYPE_INTEGER = "integer";
+    private static final String RESOURCE_TYPE_FRACTION = "fraction";
 
     private Context mContext;
     private String mDexDir;// 资源路径
